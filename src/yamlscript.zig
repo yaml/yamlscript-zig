@@ -17,7 +17,7 @@ const builtin = @import("builtin");
 // This value is automatically updated by 'make bump'.
 // The version number is used to find the correct shared library file.
 // We currently only support binding to an exact version of libys.
-pub const yamlscript_version = "0.3.5";
+pub const yamlscript_version = "0.3.6";
 
 // We currently only support platforms that GraalVM supports.
 // Windows uses an unversioned file name, matching the Python binding:
@@ -271,7 +271,7 @@ test "load error" {
     var ys = try YAMLScript.init(std.testing.allocator);
     defer ys.deinit();
 
-    try std.testing.expectError(Error.YAMLScriptError, ys.load(":"));
+    try std.testing.expectError(Error.YAMLScriptError, ys.load("["));
     try std.testing.expect(ys.error_cause != null);
 }
 
